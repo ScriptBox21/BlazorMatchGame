@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using BlazorMatchGame.Models;
 
 namespace BlazorMatchGame
 {
@@ -15,6 +13,7 @@ namespace BlazorMatchGame
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddBaseAddressHttpClient();
+            builder.Services.AddSingleton(new MatchGameModel(500));
 
             await builder.Build().RunAsync();
         }
